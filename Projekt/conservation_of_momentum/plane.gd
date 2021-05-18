@@ -34,8 +34,6 @@ func _physics_process(delta):
 	var a = target.position - position
 	
 
-	
-
 #	TODO: solve the equation of motion
 	position += velocity * delta
 	
@@ -75,8 +73,7 @@ func calculateAngleStationary():
 	
 func calculateAngleForX(givenX):
 	var diff = target.global_position - rocket_spawn.global_position
-	#if diff <0: lewo = true
-	# diif = -diff
+
 	var y = -diff.y
 	var x = givenX
 	var gx = gravity * x
@@ -90,12 +87,8 @@ func calculateAngleForX(givenX):
 	if (root < 0):
 		return 0
 	var sq = sqrt(root)
-	var lowAng = atan2((speed2 - sq),gx) #atan2         
-	var highAng = atan((speed2 + sq)/gx)
-	
-	#if (lowAng>0): if leo = true to lowange = PI -lowangle
-	#	lowAng=-1*lowAng 
-
+	var lowAng = atan2((speed2 - sq),gx)        
+	var highAng = atan2((speed2 + sq),gx)
 
 	return lowAng
 	
@@ -115,13 +108,13 @@ func deltaX():
 	
 	var deltaX = target.velocity.x * dropTime
 	
-	#deltaX = 0
 	if (0.9 * get_viewport_rect().size.x < target.global_position.x+deltaX):
 		var temp = deltaX - 0.9 * get_viewport_rect().size.x 
 		Xp = Xp+temp
 	elif (0.1*get_viewport().size.x > target.global_position.x+deltaX):
-		var temp = 0.1 * get_viewport_rect().size.x - deltaX
-		Xp = Xp-temp
+		var temp = 0.1 * get_viewport_rect().size.x + deltaX
+		print(temp)
+		Xp = Xp+temp
 	else:
 		Xp = Xp + deltaX
 
@@ -156,11 +149,6 @@ func release_rocket():
 		mass_plane -= mass_rocket
 		velocity -= (mass_rocket / mass_plane) * (drop_direction * drop_speed)
 
-		# TODO: set starting velocity for new_rocket
-		# TODO: satisfy the conservation of momentum principle:
-		#		(i)   for bomb being dropped
-		#		(ii)  for bomb being thrown in the direction oposite to plane's velocity
-		#		(iii) for bomb being thrown in any direction
 		get_parent().add_child( new_rocket )
 		
 func _draw():
