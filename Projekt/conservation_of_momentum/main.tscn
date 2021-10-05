@@ -234,12 +234,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="tekst" type="Label" parent="Node2D"]
+margin_left = 514.768
+margin_top = 67.3601
+margin_right = 608.768
+margin_bottom = 81.3601
+text = "diff.x = 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="diff" type="Label" parent="Node2D"]
-margin_left = 518.117
-margin_top = 69.3695
-margin_right = 565.117
-margin_bottom = 83.3695
-text = "diff.x: 0"
+margin_left = 543.569
+margin_top = 130.99
+margin_right = 590.569
+margin_bottom = 144.99
+text = "Space to shoot"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -113,7 +113,6 @@ func deltaX():
 		Xp = Xp+temp
 	elif (0.1*get_viewport().size.x > target.global_position.x+deltaX):
 		var temp = 0.1 * get_viewport_rect().size.x + deltaX
-		print(temp)
 		Xp = Xp+temp
 	else:
 		Xp = Xp + deltaX
